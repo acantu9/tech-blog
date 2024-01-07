@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const session = require('express-session');
-const server = require('./server');
+const server = require('./app/server');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
 const Post = require('../models/Post');
@@ -12,7 +12,8 @@ const validator = require('./validator');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll();
-
+        const blogTitle = "The Tech Blog";
+    
         // Serialize data so the template can read it
         const posts = postData.map((post) => post.get({ plain: true }));
 
