@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{blogTitle}}</title>
+    <style>
+        body {
+            background-color: rgb(164, 230, 162);
+        }
+        .navbar {
+            background-color: rgb(32, 4, 4);
+            padding: 10px;
+        }
+        .title {
+            background-color: rgb(32, 4, 4);
+            padding: 20px;
+            font-size: 24px;
+        }
+        .post {
+            border: 2px solid rgb(32, 4, 4);
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        {{#if userLoggedIn}}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        {{else}}
+            <a href="/login">Login</a>
+        {{/if}}
+    </div>
+    <div class="title">
+        <h1>{{blogTitle}}</h1>
+    </div>
+    {{#each posts}}
+        <div class="post">
+            <h2>{{title}}</h2>
+            <p>{{content}}</p>
+        </div>
+    {{/each}}
+</body>
+</html>
